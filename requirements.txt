@@ -4,3 +4,5 @@ torch
 plotly
 scikit-learn
 gensim
+pandas
+numpy

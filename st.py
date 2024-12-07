@@ -12,12 +12,17 @@ from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 from gensim.models import Word2Vec
 
+# Conditional NLTK Downloads
+nltk_packages = ['stopwords', 'punkt', 'wordnet', 'omw-1.4']
 
-nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('words')
-nltk.download('punkt_tab')
-
+for package in nltk_packages:
+    try:
+        if package in ['wordnet', 'omw-1.4']:
+            nltk.data.find(f'corpora/{package}')
+        else:
+            nltk.data.find(f'tokenizers/{package}')
+    except LookupError:
+        nltk.download(package)
 
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
@@ -115,6 +120,7 @@ class MLP(nn.Module):
         x = self.fc2(x)
         return x
 
+# Ensure the model file path is correct
 mlp = MLP(input_dim=50, hidden_dim=64, output_dim=2)
 mlp.load_state_dict(torch.load("mlp_xy_predictor.pth", map_location=torch.device('cpu')))
 mlp.eval()
@@ -152,7 +158,8 @@ if st.button("Predict and Plot"):
         y='dim2',
         color='subject',
         hover_data=['title'],
-        title='Documents Positioned in a Semantic Space'
+        title='Documents Positioned in a Semantic Space',
+        color_discrete_map=subject_colors  # Use predefined colors
     )
     fig.update_xaxes(title_text='Semantic Dimension 1')
     fig.update_yaxes(title_text='Semantic Dimension 2')
