@@ -16,6 +16,7 @@ from gensim.models import Word2Vec
 nltk.download('stopwords')
 nltk.download('punkt')
 nltk.download('words')
+nltk.download('punkt_tab')
 
 
 from nltk.tokenize import word_tokenize
