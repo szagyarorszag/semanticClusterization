@@ -2,4 +2,4 @@ streamlit
 nltk
 torch
 plotly
-sklearn
+scikit-learn
