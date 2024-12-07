@@ -13,7 +13,7 @@ from sklearn.manifold import TSNE
 from gensim.models import Word2Vec
 
 # Conditional NLTK Downloads
-nltk_packages = ['stopwords', 'punkt', 'wordnet', 'omw-1.4']
+nltk_packages = ['stopwords', 'punkt', 'wordnet', 'omw-1.4', 'punkt_tab']
 
 for package in nltk_packages:
     try:
