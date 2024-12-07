@@ -13,6 +13,11 @@ from sklearn.manifold import TSNE
 from gensim.models import Word2Vec
 
 
+nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('words')
+
+
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
