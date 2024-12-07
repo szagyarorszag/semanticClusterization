@@ -1,2 +1,5 @@
 streamlit
 nltk
+torch
+plotly
+sklearn
